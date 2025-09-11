@@ -1,6 +1,6 @@
 USE EstacionamentoDB;
 
-INSERT INTO Cliente (nomeCliente, cpfCliente, telefoneCliente) VALUES
+INSERT INTO Cliente (nome, cpf, telefone) VALUES
 ('João da Silva', '111.222.333-44', '(11) 98765-4321'),
 ('Maria Oliveira', '222.333.444-55', '(21) 91234-5678'), -- Esta cliente terá dois veículos
 ('Pedro Souza', '333.444.555-66', '(31) 95555-1234'),
@@ -13,14 +13,14 @@ INSERT INTO Vaga (localizacao, tipoVaga) VALUES
 ('C-10', 'Pequena'), 
 ('B-06', 'Grande');
 
-INSERT INTO Veiculo (codCliente, placa, modelo, cor) VALUES
+INSERT INTO Veiculo (cliente_id, placa, modelo, cor) VALUES
 (1, 'ABC-1234', 'Honda Civic', 'Prata'),    -- Veículo do João
 (2, 'XYZ-9876', 'Fiat Toro', 'Vermelho'),   -- 1º Veículo da Maria
 (2, 'GHI-5544', 'Hyundai HB20', 'Branco'),  -- 2º Veículo da Maria
 (3, 'JKL-1122', 'Chevrolet Onix', 'Preto'), -- Veículo do Pedro
 (4, 'MNO-3344', 'Honda Biz', 'Azul');       -- Veículo (moto) da Ana
 
-INSERT INTO RegistroEstacionamento (codVeiculo, codVaga, dataHoraEntrada, dataHoraSaida, valorFinal) VALUES
+INSERT INTO RegistroEstacionamento (veiculo_id, vaga_id, dataHoraEntrada, dataHoraSaida, valorFinal) VALUES
 -- Cenário 1: Estacionamento finalizado (João)
 (1, 1, '2025-09-10 08:30:00', '2025-09-10 10:45:00', 12.50),
 
