@@ -30,3 +30,21 @@ INSERT INTO Pedido_Itens (pedido_id, pizza_id, quantidade, valor_unitario) VALUE
 INSERT INTO Pedidos (cliente_id, data_hora, status, valor_total) VALUES (3, '2025-09-12 18:45:00', 'A caminho', 40.00);
 INSERT INTO Pedido_Itens (pedido_id, pizza_id, quantidade, valor_unitario) VALUES
 (4, 2, 1, 40.00);
+
+------ INSERT ADICIONAL PARA MAIS RESULTADOS NAS CONSULTAS ------
+
+-- Inserindo um cliente novo que ainda não fez pedidos.
+INSERT INTO Clientes (nome, telefone, endereco) VALUES 
+('Juliana Alves', '11944443333', 'Alameda Santos, 500');
+
+-- Inserindo uma pizza nova que ainda não foi vendida.
+INSERT INTO Pizzas (sabor, ingredientes, valor) VALUES 
+('Marguerita', 'Molho de tomate, mussarela, tomate fresco e manjericão.', 42.00);
+
+-- Inserindo um pedido que não tem um cliente cadastrado (venda de balcão).
+-- Note que o 'cliente_id' é NULL.
+INSERT INTO Pedidos (cliente_id, data_hora, status, valor_total) VALUES 
+(NULL, '2025-09-13 12:00:00', 'Entregue', 42.00);
+-- O pedido acima (que terá o id 5) precisa de um item. Vamos adicionar a pizza nova.
+INSERT INTO Pedido_Itens (pedido_id, pizza_id, quantidade, valor_unitario) VALUES 
+(5, 6, 1, 42.00);
