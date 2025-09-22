@@ -44,3 +44,30 @@ Servidores. Downtime e Disponibilidade. Tolerância a Falhas e Alta Disponibilid
 - Interpretar textos técnicos.
 - Comunicar-se de maneira assertiva.
 - Mediar conflitos nas situações de trabalho.
+
+### Conexão ao SqlServer em LocalDb:
+```
+(localdb)\MSSQLLocalDB
+```
+
+### Scaffold no Visual Studio:
+```powershell
+Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=SEUBANCO_DB;Trusted_Connection=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+```
+
+### Connection String para LocalDb:
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Server=(localdb)\\MSSQLLocalDB;Database=SEUBANCO_DB;Trusted_Connection=True;TrustServerCertificate=True;"
+}
+```
+
+### Adição de código em Program.cs
+```CSharp
+using Microsoft.EntityFrameworkCore;
+using Teste.Models;
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<ClassDbContext>(options =>
+    options.UseSqlServer(connectionString));
+```
